@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    //add this to use KSP
+    //add this to use hilt with KSP
+    id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp") version "2.0.20-1.0.24"
 }
 
@@ -19,9 +20,9 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 //        add this to use KSP
-        ksp {
-            arg("room.shemaLocation", "$projectDir/shemas")
-        }
+//        ksp {
+//            arg("room.schemaLocation", "$projectDir/schemas")
+//        }
     }
 
     buildTypes {
@@ -43,6 +44,17 @@ android {
     buildFeatures {
         compose = true
     }
+//    composeOptions {
+//        kotlinCompilerExtensionVersion = "1.5.1"
+//    }
+//    packaging {
+//        resources {
+//            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+//        }
+//    }
+//    sourceSets {
+//        getByName("main").java.srcDirs("build/generated/ksp/main/kotlin")
+//    }
 }
 
 dependencies {
@@ -64,7 +76,13 @@ dependencies {
     implementation(libs.androidx.material3)
 //    add these dependencies
     implementation(libs.androidx.material.icons.extended)
+//    Dagger-Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+//    ksp(libs.androidx.hilt.compiler)
+//    implementation(libs.androidx.hilt.navigation.compose)
+//    Room
     implementation(libs.androidx.room.runtime)
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
+//    ksp(libs.androidx.room.compiler)
+//    implementation(libs.androidx.room.ktx)
 }
