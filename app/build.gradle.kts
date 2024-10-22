@@ -3,18 +3,21 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     //add this to use hilt with KSP
-    id("com.google.dagger.hilt.android")
-    id("com.google.devtools.ksp") version "2.0.20-1.0.24"
+    alias(libs.plugins.hilt)
+//    alias(libs.plugins.kapt)
+    alias(libs.plugins.ksp)
+//    id("com.google.dagger.hilt.android")
+//    id("com.google.devtools.ksp") version "2.0.20-1.0.24"
 }
 
 android {
     namespace = "dev.usrmrz.notes"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "dev.usrmrz.notes"
-        minSdk = 24
-        targetSdk = 34
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -35,17 +38,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "21"
     }
     buildFeatures {
         compose = true
     }
 //    composeOptions {
-//        kotlinCompilerExtensionVersion = "1.5.1"
+//        kotlinCompilerExtensionVersion =  = libs.versions.androidxComposeCompiler.get()
 //    }
 //    packaging {
 //        resources {
@@ -60,24 +63,18 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
-    debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.ui.tooling.preview)
-    debugImplementation(libs.androidx.ui.test.manifest)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
     implementation(libs.androidx.material3)
 //    add these dependencies
     implementation(libs.androidx.material.icons.extended)
 //    Dagger-Hilt
-    implementation(libs.hilt.android)
+    implementation(libs.hilt.android.core)
+//    kapt(libs.hilt.android.compiler)
     ksp(libs.hilt.android.compiler)
 //    ksp(libs.androidx.hilt.compiler)
 //    implementation(libs.androidx.hilt.navigation.compose)
@@ -85,4 +82,12 @@ dependencies {
     implementation(libs.androidx.room.runtime)
 //    ksp(libs.androidx.room.compiler)
 //    implementation(libs.androidx.room.ktx)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    debugImplementation(libs.androidx.ui.test.manifest)
+    debugImplementation(libs.androidx.ui.tooling)
 }

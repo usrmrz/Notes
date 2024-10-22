@@ -1,18 +1,24 @@
 [versions]
-agp = "8.7.0"
+agp = "8.7.1"
 kotlin = "2.0.20"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.6"
-activityCompose = "1.9.2"
-composeBom = "2024.09.03"
-androidx-ui = "1.7.3"
+activityCompose = "1.9.3"
+composeBom = "2024.10.00"
+androidx-ui = "1.7.4"
 material3 = "1.3.0"
 #Add this versions
+#@keep
+compileSdk = "34"
+targetSdk = "34"
+minSdk = "21"
+#androidxComposeCompiler = "1.5.1"
 hilt-android = "2.52"
-androidx-hilt = "1.2.0"
+#androidx-hilt = "1.2.0"
+ksp = "2.0.20-1.0.24"
 room = "2.6.1"
 
 [libraries]
@@ -33,7 +39,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3",
 #Add next libriaries
 androidx-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "androidx-ui" }
 #Dagger-Hilt
-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt-android" }
+hilt-android-core = { module = "com.google.dagger:hilt-android", version.ref = "hilt-android" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt-android" }
 #androidx-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "androidx-hilt" }
 #androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidx-hilt" }
@@ -46,4 +52,6 @@ androidx-room-runtime = { group = "androidx.room", name = "room-runtime", versio
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt-android" }
+#kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
