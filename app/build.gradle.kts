@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.hilt)
 //    alias(libs.plugins.kapt)
     alias(libs.plugins.ksp)
-//    id("com.google.dagger.hilt.android")
-//    id("com.google.devtools.ksp") version "2.0.20-1.0.24"
 }
 
 android {
@@ -83,11 +81,11 @@ dependencies {
 //    ksp(libs.androidx.room.compiler)
 //    implementation(libs.androidx.room.ktx)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
+    testImplementation(libs.junit)
 }
