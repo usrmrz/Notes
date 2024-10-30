@@ -70,6 +70,7 @@ dependencies {
     implementation(libs.androidx.material3)
 //    add these dependencies
     implementation(libs.androidx.material.icons.extended)
+//    implementation(libs.lifecycle.viewmodel.compose)
 //    Dagger-Hilt
     implementation(libs.hilt.android.core)
 //    kapt(libs.hilt.android.compiler)
