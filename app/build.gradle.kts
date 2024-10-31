@@ -20,10 +20,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-//        add this to use KSP
-//        ksp {
-//            arg("room.schemaLocation", "$projectDir/schemas")
-//        }
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
     }
 
     buildTypes {
@@ -45,17 +44,17 @@ android {
     buildFeatures {
         compose = true
     }
-//    composeOptions {
-//        kotlinCompilerExtensionVersion =  = libs.versions.androidxComposeCompiler.get()
-//    }
-//    packaging {
-//        resources {
-//            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-//        }
-//    }
-//    sourceSets {
-//        getByName("main").java.srcDirs("build/generated/ksp/main/kotlin")
-//    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get().toString()
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+    sourceSets {
+        getByName("main").java.srcDirs("build/generated/ksp/main/kotlin")
+    }
 }
 
 dependencies {
@@ -66,11 +65,15 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.geometry)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 //    add these dependencies
     implementation(libs.androidx.material.icons.extended)
 //    implementation(libs.lifecycle.viewmodel.compose)
+//    Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 //    Dagger-Hilt
     implementation(libs.hilt.android.core)
 //    kapt(libs.hilt.android.compiler)
@@ -79,13 +82,13 @@ dependencies {
 //    implementation(libs.androidx.hilt.navigation.compose)
 //    Room
     implementation(libs.androidx.room.runtime)
-//    ksp(libs.androidx.room.compiler)
-//    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
+    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
     testImplementation(libs.junit)
