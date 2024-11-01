@@ -2,9 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    //add this to use hilt with KSP
     alias(libs.plugins.hilt)
-//    alias(libs.plugins.kapt)
     alias(libs.plugins.ksp)
 }
 
@@ -60,12 +58,13 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.geometry)
+    implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 //    add these dependencies
@@ -76,10 +75,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
 //    Dagger-Hilt
     implementation(libs.hilt.android.core)
-//    kapt(libs.hilt.android.compiler)
     ksp(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 //    ksp(libs.androidx.hilt.compiler)
-//    implementation(libs.androidx.hilt.navigation.compose)
 //    Room
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
