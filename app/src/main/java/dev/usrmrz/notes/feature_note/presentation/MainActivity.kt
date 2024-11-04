@@ -1,4 +1,4 @@
-package dev.usrmrz.notes
+package dev.usrmrz.notes.feature_note.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
