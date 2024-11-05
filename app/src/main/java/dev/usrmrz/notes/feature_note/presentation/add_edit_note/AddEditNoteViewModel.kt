@@ -1,6 +1,7 @@
 package dev.usrmrz.notes.feature_note.presentation.add_edit_note
 
 import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.SavedStateHandle
@@ -22,20 +23,17 @@ class AddEditNoteViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _noteTitle = mutableStateOf(
-        NoteTextFieldState(
-            hint = "Enter title..."
-        )
+        NoteTextFieldState(hint = "Enter title...")
     )
     val noteTitle: State<NoteTextFieldState> = _noteTitle
 
     private val _noteContent = mutableStateOf(
-        NoteTextFieldState(
-            hint = "Enter some content..."
-        )
+        NoteTextFieldState(hint = "Enter some content...")
     )
     val noteContent: State<NoteTextFieldState> = _noteContent
 
-    private val _noteColor = mutableStateOf(Note.noteColors.random().toArgb())
+//    @SuppressLint("AutoboxingStateCreation")
+    private val _noteColor = mutableIntStateOf(Note.noteColors.random().toArgb())
     val noteColor: State<Int> = _noteColor
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
@@ -57,7 +55,7 @@ class AddEditNoteViewModel @Inject constructor(
                             text = note.content,
                             isHintVisible = false
                         )
-                        _noteColor.value = note.color
+                        _noteColor.intValue = note.color
                     }
                 }
             }
@@ -67,9 +65,7 @@ class AddEditNoteViewModel @Inject constructor(
     fun onEvent(event: AddEditNoteEvent) {
         when(event) {
             is AddEditNoteEvent.EnteredTitle -> {
-                _noteTitle.value = noteTitle.value.copy(
-                    text = event.value
-                )
+                _noteTitle.value = noteTitle.value.copy(text = event.value)
             }
 
             is AddEditNoteEvent.ChangeTitleFocus -> {
@@ -80,9 +76,7 @@ class AddEditNoteViewModel @Inject constructor(
             }
 
             is AddEditNoteEvent.EnteredContent -> {
-                _noteContent.value = noteContent.value.copy(
-                    text = event.value
-                )
+                _noteContent.value = noteContent.value.copy(text = event.value)
             }
 
             is AddEditNoteEvent.ChangeContentFocus -> {
@@ -93,7 +87,7 @@ class AddEditNoteViewModel @Inject constructor(
             }
 
             is AddEditNoteEvent.ChangeColor -> {
-                _noteColor.value = event.color
+                _noteColor.intValue = event.color
             }
 
             is AddEditNoteEvent.SaveNote -> {
