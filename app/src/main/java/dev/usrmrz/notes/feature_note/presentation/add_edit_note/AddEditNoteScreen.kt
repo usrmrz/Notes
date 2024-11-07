@@ -19,8 +19,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Save
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -39,6 +37,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import dev.usrmrz.notes.feature_note.domain.model.Note
 import dev.usrmrz.notes.feature_note.presentation.add_edit_note.components.TransparentHintTextField
+import dev.usrmrz.notes.feature_note.presentation.util.NoteCommonFAB
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -80,18 +79,14 @@ fun AddEditNoteScreen(
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(
+            NoteCommonFAB(
                 onClick = {
                     viewModel.onEvent(AddEditNoteEvent.SaveNote)
                 },
                 containerColor = MaterialTheme.colorScheme.primary,
-                shape = CircleShape
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Save,
-                    contentDescription = "Save note"
-                )
-            }
+                icon = Icons.Default.Save,
+                contentDescription = "Save note"
+            )
         },
         snackbarHost = {
             SnackbarHost(

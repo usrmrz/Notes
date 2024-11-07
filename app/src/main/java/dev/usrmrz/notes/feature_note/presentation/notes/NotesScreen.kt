@@ -16,11 +16,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -39,6 +37,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import dev.usrmrz.notes.feature_note.presentation.notes.components.NoteItem
 import dev.usrmrz.notes.feature_note.presentation.notes.components.OrderSection
+import dev.usrmrz.notes.feature_note.presentation.util.NoteCommonFAB
 import dev.usrmrz.notes.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
@@ -53,19 +52,15 @@ fun NotesScreen(
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(
+            NoteCommonFAB(
                 onClick = {
                     navController.navigate(Screen.AddEditNoteScreen.route)
                 },
                 containerColor = MaterialTheme.colorScheme.primary,
-                shape = CircleShape
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = "Add Note",
-                    tint = MaterialTheme.colorScheme.onPrimary
-                )
-            }
+                icon = Icons.Default.Add,
+                contentDescription = "Add note",
+                tint = MaterialTheme.colorScheme.onPrimary
+            )
         },
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
