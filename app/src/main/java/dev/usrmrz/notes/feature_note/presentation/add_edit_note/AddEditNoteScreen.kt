@@ -32,9 +32,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import dev.usrmrz.notes.R
 import dev.usrmrz.notes.feature_note.domain.model.Note
 import dev.usrmrz.notes.feature_note.presentation.add_edit_note.components.TransparentHintTextField
 import dev.usrmrz.notes.feature_note.presentation.util.NoteCommonFAB
@@ -85,7 +87,7 @@ fun AddEditNoteScreen(
                 },
                 containerColor = MaterialTheme.colorScheme.primary,
                 icon = Icons.Default.Save,
-                contentDescription = "Save note"
+                contentDescription = stringResource(R.string.save)
             )
         },
         snackbarHost = {

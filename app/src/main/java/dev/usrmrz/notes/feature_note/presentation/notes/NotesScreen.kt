@@ -32,9 +32,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import dev.usrmrz.notes.R
 import dev.usrmrz.notes.feature_note.presentation.notes.components.NoteItem
 import dev.usrmrz.notes.feature_note.presentation.notes.components.OrderSection
 import dev.usrmrz.notes.feature_note.presentation.util.NoteCommonFAB
@@ -58,7 +60,7 @@ fun NotesScreen(
                 },
                 containerColor = MaterialTheme.colorScheme.primary,
                 icon = Icons.Default.Add,
-                contentDescription = "Add note",
+                contentDescription = stringResource(R.string.add),
                 tint = MaterialTheme.colorScheme.onPrimary
             )
         },
@@ -78,7 +80,7 @@ fun NotesScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Your note",
+                    text = stringResource(R.string.app_title),
                     style = MaterialTheme.typography.headlineLarge
                 )
                 IconButton(
@@ -88,7 +90,7 @@ fun NotesScreen(
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.Sort,
-                        contentDescription = "Sort"
+                        contentDescription = stringResource(R.string.sort)
                     )
                 }
             }
@@ -108,6 +110,8 @@ fun NotesScreen(
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
+            val message = stringResource(R.string.note_del)
+            val actionLabel = stringResource(R.string.undo)
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
             ) {
@@ -126,8 +130,8 @@ fun NotesScreen(
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
                             scope.launch {
                                 val result = snackbarHostState.showSnackbar(
-                                    message = "Note deleted",
-                                    actionLabel = "Undo"
+                                    message = message,
+                                    actionLabel = actionLabel
                                 )
                                 if(result == SnackbarResult.ActionPerformed) {
                                     viewModel.onEvent(NotesEvent.RestoreNote)

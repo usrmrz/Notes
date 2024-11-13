@@ -32,7 +32,6 @@ class AddEditNoteViewModel @Inject constructor(
     )
     val noteContent: State<NoteTextFieldState> = _noteContent
 
-//    @SuppressLint("AutoboxingStateCreation")
     private val _noteColor = mutableIntStateOf(Note.noteColors.random().toArgb())
     val noteColor: State<Int> = _noteColor
 
