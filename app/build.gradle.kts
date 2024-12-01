@@ -40,10 +40,8 @@ android {
         jvmTarget = "21"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get().toString()
     }
     packaging {
         resources {
@@ -59,37 +57,15 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-//    implementation(libs.androidx.activity.compose)
-//    implementation(libs.androidx.navigation.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose)
-//    implementation(libs.androidx.ui)
-//    implementation(libs.androidx.ui.geometry)
-//    implementation(libs.androidx.ui.graphics)
-//    implementation(libs.androidx.ui.tooling.preview)
-//    implementation(libs.androidx.material3)
-//    add these dependencies
-//    implementation(libs.androidx.material.icons.extended)
-//    implementation(libs.lifecycle.viewmodel.compose)
-//    Coroutines
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.android)
-//    Dagger-Hilt
-    implementation(libs.hilt.android.core)
-    ksp(libs.hilt.android.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
-    ksp(libs.androidx.hilt.compiler)
-//    Room
-    implementation(libs.androidx.room.runtime)
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
+    implementation(libs.bundles.coroutines)
+    implementation(libs.bundles.hilt)
+    implementation(libs.bundles.room)
+    ksp(libs.bundles.ksp)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.bundles.android.test)
     debugImplementation(libs.bundles.compose.debug)
-//    debugImplementation(libs.androidx.ui.test.manifest)
-//    debugImplementation(libs.androidx.ui.tooling)
     testImplementation(libs.junit)
 }
