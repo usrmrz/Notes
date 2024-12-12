@@ -6,6 +6,14 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
+apply<HelloWorldPlugin>()
+
+class HelloWorldPlugin: Plugin<Project> {
+    override fun apply(target: Project) {
+        println("That's Plugin began")
+    }
+}
+
 android {
     namespace = "dev.usrmrz.notes"
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -18,6 +26,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
@@ -40,7 +49,6 @@ android {
         jvmTarget = "21"
     }
     buildFeatures {
-        buildConfig = true
         compose = true
     }
     packaging {
