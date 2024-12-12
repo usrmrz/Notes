@@ -11,7 +11,7 @@ private val darkColorScheme = darkColorScheme(
     background = backgroundDark,
     onBackground = onBackgroundDark,
     surface = surfaceDark,
-    onSurface = onSurfaceDark
+    onSurface = onSurfaceLight
 )
 
 private val lightColorScheme = lightColorScheme(
@@ -27,7 +27,7 @@ fun NotesTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) darkColorScheme else lightColorScheme  //when {
+    val colorScheme = if (darkTheme) darkColorScheme else lightColorScheme
 
     MaterialTheme(
         colorScheme = colorScheme,
