@@ -6,14 +6,6 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-apply<HelloWorldPlugin>()
-
-class HelloWorldPlugin: Plugin<Project> {
-    override fun apply(target: Project) {
-        println("That's Plugin began")
-    }
-}
-
 android {
     namespace = "dev.usrmrz.notes"
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -31,6 +23,9 @@ android {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
     }
+    sourceSets {
+        getByName("main").java.srcDirs("build/generated/ksp/main/kotlin")
+    }
 
     buildTypes {
         release {
@@ -42,11 +37,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "21"
+        jvmTarget = "11"
     }
     buildFeatures {
         compose = true
@@ -55,9 +50,6 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
-    }
-    sourceSets {
-        getByName("main").java.srcDirs("build/generated/ksp/main/kotlin")
     }
 }
 

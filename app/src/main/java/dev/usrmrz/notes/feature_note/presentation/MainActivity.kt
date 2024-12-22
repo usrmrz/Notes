@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
                             AddEditNoteScreen(
                                 navController = navController,
                                 noteColor = color
-                                )
+                            )
                         }
                     }
                 }
