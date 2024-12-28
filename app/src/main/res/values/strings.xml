@@ -1,7 +1,7 @@
 <resources>
     <string name="add">Add note</string>
     <string name="app_name">Notes</string>
-    <string name="app_title">Your note</string>
+    <string name="app_title">Your notes</string>
     <string name="asc">Ascending</string>
     <string name="color">Color</string>
     <string name="date">Date</string>

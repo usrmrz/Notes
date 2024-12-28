@@ -2,10 +2,10 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "789b4d10b8f12dbc8def945a47e2f9bc",
+    "identityHash": "e767f889bae10429d5149c5b63f4d532",
     "entities": [
       {
-        "tableName": "Note",
+        "tableName": "notes",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`title` TEXT NOT NULL, `content` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, `color` INTEGER NOT NULL, `id` INTEGER, PRIMARY KEY(`id`))",
         "fields": [
           {
@@ -52,7 +52,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '789b4d10b8f12dbc8def945a47e2f9bc')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e767f889bae10429d5149c5b63f4d532')"
     ]
   }
 }
