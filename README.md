@@ -1,24 +1,5 @@
 # Notes
 
-Android Studio Ladybug | 2024.2.1 Patch 3
-Build #AI-242.23339.11.2421.12700392, built on November 22, 2024
-Runtime version: 21.0.3+-12282718-b509.11 amd64
-VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o.
-Toolkit: sun.awt.windows.WToolkit
-Windows 10.0
-Kotlin plugin: K2 mode (Beta)
-GC: G1 Young Generation, G1 Concurrent GC, G1 Old Generation
-Memory: 8192M
-Cores: 28
-Registry:
-  ide.instant.shutdown=false
-  ide.experimental.ui=true
-  i18n.locale=
-  terminal.new.ui=true
-Non-Bundled Plugins:
-  Key Promoter X (2024.2.2)
-
-
 Recreated Philipp Lackner's YouTube project<br>
 "How to Make a Clean Architecture Note App<br>
 (MVVM / CRUD / Jetpack Compose) - Android Studio Tutorial"<br>
