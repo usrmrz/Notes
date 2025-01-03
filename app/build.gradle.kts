@@ -1,8 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.autonomousapps)
+    alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
 }
 
@@ -18,6 +19,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
@@ -31,8 +35,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -55,17 +58,18 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.bundles.androidx)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.coroutines)
-    implementation(libs.bundles.hilt)
+    implementation(libs.bundles.dagger.hilt)
     implementation(libs.bundles.room)
     ksp(libs.bundles.ksp)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.bundles.android.test)
     debugImplementation(libs.bundles.compose.debug)
+    debugRuntimeOnly(libs.androidx.ui.test.manifest)
+    runtimeOnly(libs.kotlinx.coroutines.android)
     testImplementation(libs.junit)
 }

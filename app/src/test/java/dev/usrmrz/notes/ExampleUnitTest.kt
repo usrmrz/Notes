@@ -1,7 +1,6 @@
 package dev.usrmrz.notes
 
 import org.junit.Test
-
 import org.junit.Assert.*
 
 /**
